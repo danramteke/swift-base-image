@@ -23,6 +23,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
   libicu-dev \
   libsqlite3-dev \
   libxml2 \
+  libpq-dev \
   wget \
   libcurl4-openssl-dev \
   vim \
