@@ -3,8 +3,8 @@ FROM ubuntu:16.10
 USER root
 
 # Set environment variables for image
-ENV SWIFT_SNAPSHOT swift-4.0-RELEASE
-ENV SWIFT_SNAPSHOT_LOWERCASE swift-4.0-release
+ENV SWIFT_SNAPSHOT swift-4.0.2-RELEASE
+ENV SWIFT_SNAPSHOT_LOWERCASE swift-4.0.2-release
 ENV UBUNTU_VERSION ubuntu16.10
 ENV UBUNTU_VERSION_NO_DOTS ubuntu1610
 ENV WORK_DIR /
@@ -14,20 +14,22 @@ WORKDIR ${WORK_DIR}
 
 # Linux OS utils and libraries and set clang 3.8 as default
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
-  build-essential \
   pkg-config \
-  gnupg2 \
-  dirmngr \
+  build-essential \
   clang-3.8 \
+  dirmngr \
   git \
-  libpython2.7 \
+  gnupg2 \
+  libbsd \
+  libcurl4-openssl-dev \
   libicu-dev \
+  libpython2.7 \
+  libpq-dev \
   libsqlite3-dev \
   libxml2 \
-  libpq-dev \
   wget \
-  libcurl4-openssl-dev \
   vim \
+  zlib1g-dev \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.8 100 \
