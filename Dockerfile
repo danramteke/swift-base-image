@@ -20,6 +20,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
   dirmngr \
   git \
   gnupg2 \
+  libbsd-dev \
   libcurl4-openssl-dev \
   libicu-dev \
   libpython2.7 \
