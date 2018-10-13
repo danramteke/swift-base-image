@@ -1,3 +1,4 @@
+
 FROM ubuntu:18.04
 
 ENV SWIFT_TAR_URL https://swift.org/builds/swift-4.2-release/ubuntu1804/swift-4.2-RELEASE/swift-4.2-RELEASE-ubuntu18.04.tar.gz
@@ -6,6 +7,7 @@ ENV WORK_DIR /
 
 # Set WORKDIR
 WORKDIR ${WORK_DIR}
+
 
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
   pkg-config \
@@ -26,6 +28,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
   vim \
   wget \
   zlib1g-dev \
+  tzdata \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && echo "set -o vi" >> /root/.bashrc
