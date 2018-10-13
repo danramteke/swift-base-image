@@ -1,15 +1,13 @@
-
 FROM ubuntu:18.04
 
 ENV SWIFT_TAR_URL https://swift.org/builds/swift-4.2-release/ubuntu1804/swift-4.2-RELEASE/swift-4.2-RELEASE-ubuntu18.04.tar.gz
+ENV SWIFT_TAR_FILE swift-4.2-RELEASE-ubuntu18.04.tar.gz
 
 ENV WORK_DIR /
-
-# Set WORKDIR
 WORKDIR ${WORK_DIR}
 
 
-RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
+RUN apt-get update && apt-get dist-upgrade -y && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   pkg-config \
   build-essential \
   clang \
@@ -20,7 +18,6 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
   libcurl4-openssl-dev \
   libicu-dev \
   libpython2.7 \
-  libpq-dev \
   libsqlite3-dev \
   libssl-dev \
   libxml2 \
@@ -42,10 +39,10 @@ RUN wget $SWIFT_TAR_URL $SWIFT_TAR_URL.sig \
       '5E4D F843 FB06 5D7F 7E24  FBA2 EF54 30F0 71E1 B235' \
       '8513 444E 2DA3 6B7C 1659  AF4D 7638 F1FB 2B2B 08C4' \
   && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80  --refresh-keys  \
-  && gpg --verify $SWIFT_SNAPSHOT-$UBUNTU_VERSION.tar.gz.sig \
-  && tar xzvf $SWIFT_SNAPSHOT-$UBUNTU_VERSION.tar.gz --strip-components=1 \
-  && rm $SWIFT_SNAPSHOT-$UBUNTU_VERSION.tar.gz \
-  && rm $SWIFT_SNAPSHOT-$UBUNTU_VERSION.tar.gz.sig \
+  && gpg --verify $SWIFT_TAR_FILE.sig \
+  && tar xzf $SWIFT_TAR_FILE --strip-components=1 \
+  && rm $SWIFT_TAR_FILE \
+  && rm $SWIFT_TAR_FILE.sig \
   && chmod -R go+r /usr/lib/swift \
   && swift --version
 
