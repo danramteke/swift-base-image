@@ -31,14 +31,14 @@ RUN apt-get update && apt-get dist-upgrade -y && DEBIAN_FRONTEND=noninteractive 
   && echo "set -o vi" >> /root/.bashrc
 
 RUN wget $SWIFT_TAR_URL $SWIFT_TAR_URL.sig \
-  && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80  \
+  && gpg --keyserver hkp://pool.sks-keyservers.net  \
       --recv-keys \
       '7463 A81A 4B2E EA1B 551F  FBCF D441 C977 412B 37AD' \
       '1BE1 E29A 084C B305 F397  D62A 9F59 7F4D 21A5 6D5F' \
       'A3BA FD35 56A5 9079 C068  94BD 63BC 1CFE 91D3 06C6' \
       '5E4D F843 FB06 5D7F 7E24  FBA2 EF54 30F0 71E1 B235' \
       '8513 444E 2DA3 6B7C 1659  AF4D 7638 F1FB 2B2B 08C4' \
-  && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80  --refresh-keys  \
+  && gpg --keyserver hkp://pool.sks-keyservers.net  --refresh-keys  \
   && gpg --verify $SWIFT_TAR_FILE.sig \
   && tar xzf $SWIFT_TAR_FILE --strip-components=1 \
   && rm $SWIFT_TAR_FILE \
