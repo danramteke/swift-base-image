@@ -40,7 +40,7 @@ RUN curl -fsSL $SWIFT_TAR_URL -o swift.tar.gz \
   && rm swift.tar.gz \
   && rm swift.tar.gz.sig \
   && chmod -R go+r /usr/lib/swift \
-  && rm -r $GNUPGHOME \
+  && rm -fr $GNUPGHOME \
   && swift --version
 
 CMD /bin/bash
