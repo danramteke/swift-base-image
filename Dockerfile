@@ -25,8 +25,7 @@ RUN apt-get update && apt-get dist-upgrade -y && DEBIAN_FRONTEND=noninteractive 
   vim \
   zlib1g-dev \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-  && echo "set -o vi" >> /root/.bashrc
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 RUN curl -fsSL $SWIFT_TAR_URL -o swift.tar.gz \
   && curl -fsSL $SWIFT_TAR_URL.sig -o swift.tar.gz.sig \
