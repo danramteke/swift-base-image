@@ -17,6 +17,7 @@ RUN apt-get update && apt-get dist-upgrade -y && DEBIAN_FRONTEND=noninteractive 
   libicu-dev \
   libpython2.7 \
   libsqlite3-dev \
+  sqlite3 \
   libssl-dev \
   libxml2 \
   openssl \
