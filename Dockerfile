@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV SWIFT_TAR_URL https://swift.org/builds/swift-5.1.4-release/ubuntu1804/swift-5.1.4-RELEASE/swift-5.1.4-RELEASE-ubuntu18.04.tar.gz
+ENV SWIFT_TAR_URL https://swift.org/builds/swift-5.1.5-release/ubuntu1804/swift-5.1.5-RELEASE/swift-5.1.5-RELEASE-ubuntu18.04.tar.gz
 
 ENV WORK_DIR /
 WORKDIR ${WORK_DIR}
@@ -34,7 +34,6 @@ RUN curl -fsSL $SWIFT_TAR_URL -o swift.tar.gz \
   && curl -fsSL https://swift.org/keys/all-keys.asc -o all-keys.asc \
   && gpg --import all-keys.asc \
   && rm all-keys.asc \
-  && gpg --keyserver hkp://pool.sks-keyservers.net  --refresh-keys  \
   && gpg --batch --verify swift.tar.gz.sig swift.tar.gz \
   && tar xzf swift.tar.gz --strip-components=1 \
   && rm swift.tar.gz \
