@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV SWIFT_TAR_URL https://swift.org/builds/swift-5.1.5-release/ubuntu1804/swift-5.1.5-RELEASE/swift-5.1.5-RELEASE-ubuntu18.04.tar.gz
+ENV SWIFT_TAR_URL https://swift.org/builds/swift-5.2-release/ubuntu1804/swift-5.2-RELEASE/swift-5.2-RELEASE-ubuntu18.04.tar.gz
 
 ENV WORK_DIR /
 WORKDIR ${WORK_DIR}
