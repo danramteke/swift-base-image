@@ -1,21 +1,18 @@
 FROM ubuntu:18.04
 
-ENV SWIFT_TAR_URL https://swift.org/builds/swift-5.2-release/ubuntu1804/swift-5.2-RELEASE/swift-5.2-RELEASE-ubuntu18.04.tar.gz
+ENV SWIFT_TAR_URL https://swift.org/builds/swift-5.2.2-release/ubuntu1804/swift-5.2.2-RELEASE/swift-5.2.2-RELEASE-ubuntu18.04.tar.gz
 
 ENV WORK_DIR /
 WORKDIR ${WORK_DIR}
 
-RUN apt-get update && apt-get dist-upgrade -y && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-  build-essential \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   clang \
   curl \
   dirmngr \
-  git \
   gnupg2 \
   libbsd-dev \
   libcurl4-openssl-dev \
   libicu-dev \
-  libpython2.7 \
   libsqlite3-dev \
   sqlite3 \
   libssl-dev \
@@ -23,7 +20,6 @@ RUN apt-get update && apt-get dist-upgrade -y && DEBIAN_FRONTEND=noninteractive 
   openssl \
   pkg-config \
   tzdata \
-  vim \
   xz-utils \
   zlib1g-dev \
   && apt-get clean \
