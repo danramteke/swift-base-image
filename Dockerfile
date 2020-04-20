@@ -9,6 +9,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   clang \
   curl \
   dirmngr \
+  git \
   gnupg2 \
   libbsd-dev \
   libcurl4-openssl-dev \
